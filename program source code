@@ -1,0 +1,19 @@
+void setup() {
+    pinMode(2, INPUT);     // Set PIR sensor output pin as input
+    pinMode(LED_BUILTIN, OUTPUT); // Set built-in LED as output
+    Serial.begin(9600);    // Start serial communication
+}
+
+void loop() {
+    int motion = digitalRead(2); // Read PIR sensor output
+
+    if (motion == HIGH) {
+        digitalWrite(LED_BUILTIN, HIGH); // Turn LED ON
+        Serial.println("Motion detected: LED ON");
+    } else {
+        digitalWrite(LED_BUILTIN, LOW); // Turn LED OFF
+        Serial.println("No motion detected: LED OFF");
+    }
+    
+    delay(500);
+}
